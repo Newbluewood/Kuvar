@@ -1,0 +1,66 @@
+:root {
+  --bela: #ffffff;
+  --svetlija-sivkasta: #e3d8d1;
+  --sivkasta: #90877b;
+
+  --najsvetlija-bordo: #986254;
+  --svetlija-bordo: #7d5045;
+  --bordo: #69443c;
+  --tamnija-bordo: #5b3b34;
+  --najtamnija-bordo: #3d2823;
+
+  /*boje za gradient navigacije*/
+  --tamniji-gradient: #5b3b34;
+  --svetliji-gradient: #ca9cab;
+}
+
+/* semantic color variables for this project */
+:root {
+  /*button*/
+  --button-bg: var(--bordo);
+  --button-color: var(--svetlija-sivkasta);
+
+  /*button:hover*/
+  --button-hover-bg: var(--svetlija-bordo);
+  --button-hover-color: var(--bela);
+  --button-hover-outline: var(--tamnija-bordo);
+
+  --link-hover-color: var(--najtamnija-bordo);
+  --link-hover-outline: var(--svetlija-bordo);
+
+  --veliki-naslov: var(--bordo);
+  --tekst-footer: var(--bela);
+  --gradijent: linear-gradient(
+    to left,
+    var(--svetliji-gradient) 0%,
+    var(--tamniji-gradient) 40%,
+    var(--tamniji-gradient) 60%,
+    var(--svetliji-gradient) 100%
+  );
+  --nav-slova: var(--bela);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    'TT Commons Pro Expanded',
+    'The Seasons' sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

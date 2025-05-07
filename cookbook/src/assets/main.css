@@ -1,0 +1,716 @@
+@font-face {
+  font-family: 'Inter'; /* Ime fonta koje ćeš koristiti u projektu */
+  src: url('/src/fonts/Inter/static/Inter_18pt-ExtraLight.ttf') format('truetype'); /* Putanja do fajla fonta */
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+p {
+  line-height: 1.2; /* Ovo određuje razmak između redova */
+}
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+h4,
+h5,
+h6 {
+  margin-top: 1%;
+  line-height: 1.1;
+}
+
+a {
+  text-decoration: none;
+  color: var(--bordo);
+}
+
+.wrapper {
+  background-image: url('../src/assets/img/background.png');
+  min-height: 100vh;
+  /* Center and scale the image nicely */
+  background-position: center top;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.cookbook-title {
+  font-family: 'Inter', serif;
+  font-weight: bold;
+  color: var(--veliki-naslov); /* Elegantna braonkasta nijansa */
+  text-align: center; /* Centriraj tekst */
+  position: absolute; /* Pozicioniranje */
+  left: 50%; /* Centriranje */
+  transform: translateX(-50%); /* Podešavanje centra */
+  line-height: 1.2; /* Razmak između redova */
+  /*font-size: 0.9vw;  Dinamička veličina fonta prema širini ekrana */
+  text-decoration: none;
+  font-size: 16px;
+  max-width: 100%; /* Sprečava preklapanje */
+  position: relative; /* Da ne preklapa sadržaj ispod */
+  margin: 0% 0% 1.5% 0%; /* Centrirano i sa margina za razmak */
+}
+.cookbook-title span {
+  display: block; /* Osigurava razdvajanje redova */
+}
+
+.cookbook-title:hover {
+  color: var(--najtamnija-bordo);
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.content {
+  width: 85%; /* Širina container-a postavljena na 85% ekrana */
+  padding: 0.3%; /* Padding od 5% sa svih strana */
+  margin: 2% auto; /* Centriranje container-a */
+  background-color: transparent; /* Pozadinska boja container-a */
+  border: 1px solid var(--color-border);
+  /*box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); Opcionalna senka za dubinu */
+  min-height: 40vh;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--veliki-naslov);
+}
+
+.velikiNaslov {
+  width: 60%;
+  margin: 0.5% auto;
+  color: var(--veliki-naslov);
+  font-size: 40pt;
+  font-family:
+    'Playfair' thin,
+    sans-serif;
+}
+
+.manjiVelikiNaslov {
+  font-size: 26pt;
+}
+
+.najmanjiVelikiNaslov {
+  font-size: 20pt;
+}
+
+.maliNaslov {
+  width: 55%;
+  margin: 0.5% auto;
+  font-size: 12pt;
+  font-family: 'Inter', sans-serif;
+  color: var(--veliki-naslov);
+}
+
+.velikaSlova {
+  width: 40%;
+  text-transform: uppercase;
+}
+
+button {
+  font-size: 12pt;
+}
+
+.maloDugme {
+  margin: 1%;
+  padding: 0.5% 7%;
+  border: 2px solid var(--color-border);
+  background-color: var(--button-bg);
+  border-radius: 1rem;
+  color: var(--button-color);
+  font-family: 'Inter', sans-serif !important;
+}
+
+.velikoDugme {
+  margin: 0.5%;
+  padding: 0.5% 7%;
+  border: 2px solid var(--color-border);
+  background-color: var(--button-bg);
+  border-radius: 1rem;
+  color: var(--button-color);
+  width: 50%;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  color: var(--button-hover-color);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.inputText {
+  font-size: 12pt;
+  color: var(--veliki-naslov);
+  padding: 1% 3%;
+  border: 0px;
+  border-radius: 18px;
+  font-family: 'Inter', serif; /* Stil fonta */
+  display: block; /* Postavlja svaki input na novi red */
+  width: 50% !important; /* Širina polja prilagodljiva ekranu */
+  margin: 10px auto; /* Centriranje i razmak između polja */
+  padding: 10px;
+}
+.inputText::placeholder,
+.pretraziSve::placeholder {
+  color: var(--svetlija-bordo);
+}
+.inputText:hover,
+.pretraziSve:hover {
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  transform: scale(1.05); /* Blago povećanje na hover */
+  transition: transform 0.3s ease;
+}
+.textCenter {
+  text-align: center;
+}
+.textBold {
+  font-weight: bolder;
+}
+.dodatak {
+  font-family: 'Inter';
+  font-size: 18px;
+  color: var(--bordo);
+}
+.dodatak a {
+  font-family: 'Inter', serif !important;
+  font-weight: bold;
+}
+.dodatak a:hover {
+  background: linear-gradient(to right, white 10%, var(--bordo) 10%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  background-clip: text;
+  color: transparent;
+  animation: slide 0.4s;
+}
+@keyframes slide {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.pretraziSve {
+  font-size: 12pt;
+  color: var(--veliki-naslov);
+  text-align: center;
+  padding: 0.6% 0%;
+  border: 0px;
+  border-radius: 18px;
+  font-family: 'Inter', serif;
+  display: block;
+  width: 20%; /* Širina polja prilagodljiva ekranu */
+  margin: 5px auto; /* Centriranje i razmak između polja */
+}
+
+.card-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.responsive-image {
+  width: 10vw !important;
+  height: auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff2f;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background-color 0.5s ease;
+
+  background: linear-gradient(to right, white 10%, var(--bordo) 40%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  background-clip: text;
+  color: transparent;
+  animation: slide 0.5s;
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-width {
+  width: 30%;
+  height: 200px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: var(--tamnija-bordo);
+}
+.card-user {
+  width: 55%;
+  margin: 1% auto;
+  text-transform: uppercase;
+  font-size: 8pt;
+  font-family: 'Inter', sans-serif;
+  color: var(--veliki-naslov);
+}
+
+.card-date {
+  font-size: 0.9rem;
+  color: var(--sivkasta);
+  margin-bottom: 10px;
+}
+
+.card-fav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.card-fav .social-icon img {
+  width: 18px !important;
+}
+
+nav {
+  display: inline-block; /* Omogućava da navigacija ima širinu na osnovu sadržaja */
+  background: var(--gradijent); /* Primer za pozadinsku boju */
+  font-family: 'Inter', sans-serif;
+  position: fixed;
+  bottom: 50px;
+  left: 50%; /* Centriramo navigaciju */
+  transform: translateX(-50%); /* Prilagođavamo poziciju zbog centriranja */
+  border-radius: 15px;
+  padding: 5px 15px; /* Dodaj padding za bolji vizual */
+  white-space: nowrap; /* Sprečava prelamanje u više redova */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Dodaj laganu senku */
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Horizontalno postavljanje stavki */
+  gap: 10px; /* Razmak između stavki */
+}
+
+.nav-list li {
+  display: inline-block;
+}
+
+.nav-link {
+  color: var(--nav-slova);
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+}
+.nav-link:hover {
+  color: var(--link-hover-color) !important;
+  transition:
+    transform 0.4s ease,
+    color 0.5s ease;
+}
+
+.social-links {
+  display: flex; /* Redosled ikona u jednom redu */
+  justify-content: center; /* Centriranje */
+  gap: 25px; /* Razmak između ikona */
+  margin: 5% 0; /* Gornji i donji razmak */
+}
+
+.social-icon img {
+  width: 30px !important; /* Standardna veličina ikona */
+  height: 30px;
+}
+
+.social-icon img:hover {
+  cursor: pointer;
+  transform: scale(1.5); /* Blago povećanje na hover */
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center; /* Vertikalno centriranje */
+}
+.responsive-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 40px; /* Vertikalno poravnanje imena sa slikom */
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.full-name {
+  font-size: 1rem;
+  color: gray;
+}
+
+.action-button {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-border);
+  background-color: var(--button-bg);
+  border-radius: 1rem;
+  color: var(--button-color);
+  font-family: 'Inter', sans-serif !important;
+
+  cursor: pointer;
+}
+
+.filters-section {
+  margin-bottom: 2rem;
+}
+
+.filters-container {
+  display: flex;
+  gap: 2rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff2f;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.filters-column {
+  flex: 1;
+}
+
+.sort-dropdown {
+  padding: 0.5rem;
+  /*border: 1px solid #ddd;*/
+  border-radius: 5px;
+  font-size: 18px;
+  color: var(--text);
+  background-color: rgba(255, 255, 255, 0.184);
+  border: none;
+  outline: none;
+  text-align: start;
+}
+.sort-dropdown:hover {
+  cursor: pointer;
+  color: var(--najtamnija-bordo);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.toggle-button {
+  background-color: var(--bordo);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.accordion-content {
+  overflow: hidden;
+  height: 0;
+}
+/* Responsivni dizajn - manji ekran */
+@media (max-width: 1200px) {
+  .cookbook-title {
+    font-size: 2vw; /* Veći font na manjim ekranima */
+  }
+  .pretraziSve {
+    width: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cookbook-title {
+    font-size: 5vw; /* Veći font na manjim ekranima */
+  }
+
+  .velikiNaslov {
+    width: 80%;
+    font-size: 30pt;
+  }
+
+  .manjiVelikiNaslov {
+    width: 80%;
+    font-size: 26pt;
+  }
+
+  .najmanjiVelikiNaslov {
+    width: 80%;
+    font-size: 20pt;
+  }
+
+  .maliNaslov {
+    width: 80%;
+    font-size: 22pt;
+  }
+
+  .pretraziSve {
+    width: 60%;
+    padding: 1.5%;
+  }
+  .inputText {
+    width: 80% !important;
+  }
+  .velikoDugme {
+    width: 80%;
+    padding: 0.9% 7%;
+  }
+}
+.router-link-active {
+  color: var(--najtamnija-bordo); /* boja teksta aktivne rute */
+}
+
+@media (max-width: 480px) {
+  .cookbook-title {
+    font-size: 6vw; /* Veći font na manjim ekranima */
+  }
+  nav {
+    width: 90%; /* Širina navigacije postavljena na 90% za manji ekran */
+  }
+
+  .nav-list {
+    justify-content: center; /* Align items to the left on smaller screens */
+  }
+  .velikiNaslov {
+    width: 100%;
+    font-size: 20pt;
+  }
+
+  .maliNaslov {
+    width: 100%;
+    font-size: 11pt;
+  }
+
+  .velikoDugme {
+    width: 80%;
+    padding: 1% !important;
+  }
+
+  .social-links {
+    gap: 10px;
+  }
+
+  .social-icon img {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-list li {
+    width: 100%;
+  }
+  .velikiNaslov {
+    width: 100%;
+    font-size: 18pt;
+  }
+
+  .maliNaslov {
+    width: 100%;
+    font-size: 9pt;
+  }
+
+  .velikoDugme {
+    width: 90%;
+    font-size: 10pt;
+    padding: 1% !important;
+  }
+  .inputText {
+    width: 90% !important;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    width: 80%;
+  }
+}
+
+@media (max-width: 340px) {
+  .card {
+    width: 75%;
+  }
+}
+
+@media (max-width: 320px) {
+  .card {
+    width: 70%;
+  }
+}
+
+@media (max-width: 300px) {
+  .card {
+    width: 65%;
+  }
+  .card-image {
+    max-height: 100px;
+  }
+}
+
+@media (max-width: 280px) {
+  .card {
+    width: 60%;
+  }
+}
+
+@media (max-width: 260px) {
+  .card {
+    width: 55%;
+  }
+}
+
+@media (max-width: 240px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media (max-width: 240px) {
+  .card {
+    width: 45%;
+  }
+}
