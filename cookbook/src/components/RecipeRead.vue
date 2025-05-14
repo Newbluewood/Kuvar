@@ -563,7 +563,7 @@ ul li {
 .three-column-layout {
   width: 100%;
   display: grid;
-  grid-template-columns: 7fr 4fr 1fr;
+  grid-template-columns: 6fr 4fr 2fr;
   gap: 25px;
 }
 
