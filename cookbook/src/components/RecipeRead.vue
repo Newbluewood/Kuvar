@@ -262,7 +262,7 @@ onUnmounted(() => {
         <!-- Glavni sadržaj u 3 kolone -->
         <div class="three-column-layout">
           <!-- Prva kolona: Recipe Content -->
-          <div class="recipe-content">
+          <div class="recipe-content col1">
             <div class="recipe-image">
               <button class="maloDugme noSleep" @click="lock">
                 <img src="/src/assets/icons/owl.svg" /> Ne gasi ekran
@@ -291,7 +291,7 @@ onUnmounted(() => {
           </div>
 
           <!-- Središnja kolona: Recipe Preparation -->
-          <div class="recipe-preparation">
+          <div class="recipe-preparation col2">
             <h1>Priprema:</h1>
             <div
               class="recipe-preparation-divider"
@@ -299,13 +299,13 @@ onUnmounted(() => {
               :key="index"
             >
               <div>
-                <h4>{{ index + 1 }}. {{ store.stepTitles[index] }}</h4>
+                <h4 class="recipe-preparation-header">{{ store.stepTitles[index] }}</h4>
                 <p>{{ store.stepTexts[index] }}</p>
               </div>
 
-              <div class="koraci">
-                <div v-if="(store.pushImage(index))" class="slikaKoraka">
-                  <img :src="store.pushImage(index)" :alt="store.stepTitles[index]" />
+              <div class="recipe-preparation-steps">
+                <div v-if="(store.pushImage(index))">
+                  <img class="recipe-preparation-image" :src="store.pushImage(index)" :alt="store.stepTitles[index]" />
                 </div>
                 <div v-else>
                 </div>
@@ -314,7 +314,7 @@ onUnmounted(() => {
           </div>
 
           <!-- Treća kolona: Comments -->
-          <div class="recipe-comments">
+          <div class="recipe-comments col3">
             <h1>Komentari</h1>
             <!--  KOMENTARI -->
             <div v-if="comStore.comments && comStore.comments.length > 0">
@@ -323,27 +323,26 @@ onUnmounted(() => {
                 v-for="(comment, index) in comStore.comments"
                 :key="comment.idCom"
               >
-                <div class="comment-header">
-                  <span class="">
-                    <a class="link" @click="handleClickUserComment">
-                      <img
-                        v-if="comment.usrImg != null"
-                        :src="comment.usrImg"
-                        alt="Profilna slika"
-                        class="responsive-img"
-                      />
-                      <img
-                        v-else
-                        src="/src/assets/icons/userProfilePic.svg"
-                        alt="Profilna slika"
-                        class="responsive-img"
-                      />
-                    </a>
-                  </span>
+                <div class="comment-content">
+                  <div class="comment-header">
+                    <span class="avatarUser">
+                      <a class="link" @click="handleClickUserComment">
+                        <img
+                          v-if="comment.usrImg != null"
+                          :src="comment.usrImg"
+                          alt="Profilna slika"
+                          class="responsive-img"
+                        />
+                        <img
+                          v-else
+                          src="/src/assets/icons/userProfilePic.svg"
+                          alt="Profilna slika"
+                          class="responsive-img"
+                        />
+                      </a>
+                    </span>
                   <span class="user-name">{{ comment.name }}</span>
                 </div>
-
-                <div class="comment-content">
                   <h3>{{ comment.text }}</h3>
                   <img :src="comStore.pushImage(index)" />
                   <button
@@ -351,7 +350,7 @@ onUnmounted(() => {
                     @click="popupDeledeComm(comment.idCom)"
                     class="maloDugme"
                   >
-                    x - obrisi ovaj komentar
+                    Obrisi
                   </button>
                 </div>
               </div>
@@ -360,7 +359,7 @@ onUnmounted(() => {
               <h1 class="maliNaslov">Trenutno nema postavljenih komentara!</h1>
             </div>
 
-            <div v-if="id != null">
+            <div v-if="id != null" class="addComent">
               <input type="text" class="inputText" v-model="inputText" placeholder="Komentar..." />
               <!--  slika komentara -->
 
@@ -389,7 +388,7 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div v-if="id != null && isAdmin">
+        <div v-if="id != null && isAdmin" class="opcije">
           <h2>Opcije za autorizovanog korisnika</h2>
           <button v-if="check" class="velikoDugme" @click="handleClickEdit">Edit</button>
           <button v-if="check" class="velikoDugme" @click="popupDeleteRec">Obrisi recept</button>
@@ -412,6 +411,9 @@ onUnmounted(() => {
   </div>
 </template>
 <style scoped>
+.opcije{
+  margin-top: 50px;
+}
 /* Postojeći stilovi */
 .recipe-view {
   padding: 0.5%;
@@ -466,6 +468,7 @@ onUnmounted(() => {
 
 .recipe-image img {
   max-width: 100%;
+  max-height: 400px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -488,13 +491,51 @@ ul li {
   text-align: left;
 }
 .recipe-preparation-divider {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+
   gap: 20px;
 }
 .recipe-preparation h4 {
   margin: 10px 0;
+}
+.recipe-preparation-header{
+  background-color: rgba(250, 235, 215, 0.406);
+  border-radius: 5px;
+  padding: 2px;
+  width: 100%;
+}
+
+.recipe-preparation-header ~ p {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.2em;
+}
+.recipe-preparation-steps{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*background-color: rgba(250, 235, 215, 0.204);*/
+  border-radius: 1rem;
+
+}
+
+
+.comment-header{
+  width: 100%;
+  height: 50px;
+  background-color: rgba(240, 248, 255, 0.156);
+  border-radius: 10px;
+  padding: 0 5px;
+  place-self: start;
+  margin-bottom: 5px;
+}
+
+.responsive-img{
+  height: 100%;
+}
+.avatarUser{
+  height: 50px;
 }
 
 .comment-content {
@@ -503,26 +544,36 @@ ul li {
   margin-bottom: 10px;
   border-radius: 5px;
 }
+.addComent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(133, 112, 68, 0.096);
+  border-radius: 15px;
+  padding: 10px;
+
+}
 
 .inputText {
-  width: 100% !important;
+  width: 100%;
 }
 
 /* Novi stilovi za tri kolone */
+
 .three-column-layout {
+  width: 100%;
   display: grid;
-  grid-template-columns: 3fr 5fr 2fr; /* Omjer 3:5:2 */
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: left !important;
+  grid-template-columns: 7fr 4fr 1fr;
+  gap: 25px;
 }
+
 
 .recipe-content,
 .recipe-preparation,
 .recipe-comments {
   border-radius: 10px;
   padding: 0.5%;
+
 }
 
 .recipe-content .recipe-image img {
@@ -531,9 +582,10 @@ ul li {
   border-radius: 10px;
 }
 .recipe-preparation img {
-  max-width: 80%;
+  max-width: 90%;
   height: auto;
   border-radius: 10px;
+  place-self: center;
 }
 .file-upload {
   margin: 1rem;
@@ -548,13 +600,13 @@ ul li {
 .file-aria {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: fit-content;
 }
 .slikaKomentara {
-  width: 200px;
+  width: 150px;
   height: auto;
-  min-height: 200px;
+  min-height: 150px;
   margin: 0.5rem;
   padding: 0.5rem;
   display: flex;
@@ -567,7 +619,12 @@ ul li {
 }
 
 img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .dodatno {
@@ -582,6 +639,11 @@ img {
   display: block;
 }
 
+button{
+  margin: 10px 5px;
+  place-self: center;
+}
+
 /* Responzivni dizajn */
 @media (max-width: 992px) {
   .three-column-layout {
@@ -589,7 +651,7 @@ img {
   }
 
   .recipe-comments {
-    grid-column: span 2; /* Komentari prelaze u novu sekciju */
+    grid-column: span 1; /* Komentari prelaze u novu sekciju */
   }
 }
 

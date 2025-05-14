@@ -11,4 +11,6 @@
     </div>
   </div>
 </template>
-<script scoped></script>
+<style scoped>
+
+</style>
