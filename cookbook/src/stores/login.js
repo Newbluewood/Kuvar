@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import api from '../../api'
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 export const useLoginStore = defineStore('login', () => {
   const loginStatus = ref()
@@ -15,6 +16,8 @@ export const useLoginStore = defineStore('login', () => {
   const userId = ref(localStorage.getItem('id'))
   const userName = ref(localStorage.getItem('name'))
   const erorField = ref('')
+
+  const router = useRouter()
 
   if (SSD.value) {
     loginStatus.value = true
@@ -70,6 +73,7 @@ export const useLoginStore = defineStore('login', () => {
       admin.value = false
       userId.value = null
       userName.value = null
+      router.push("/")
       window.location.reload()
     } catch (error) {
       message.value = error
