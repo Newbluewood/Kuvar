@@ -28,8 +28,9 @@ function popupLogin() {
   } else {
     popupHeader.value = ' Prijavite se! '
     btns.value.push('Uloguj me')
+    btns.value.push('Registracija')
   }
-  btns.value.push('Registracija')
+
   PopupShow.value = true
 }
 
