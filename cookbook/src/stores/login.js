@@ -51,8 +51,10 @@ export const useLoginStore = defineStore('login', () => {
       if (res.data.res === 'ok') {
         loginStatus.value = true
         localStorage.setItem('sid', res.data.sid)
-        router.push("/recipes")
-        window.location.reload()
+        setTimeout(()=>{
+          window.location.reload()
+        }, 1)
+
       }
     } catch (error) {
       message.value = error.response.data.message
@@ -78,6 +80,7 @@ export const useLoginStore = defineStore('login', () => {
       setTimeout(()=>{
         window.location.reload()
       }, 10)
+
     } catch (error) {
       message.value = error
     }
