@@ -75,7 +75,9 @@ export const useLoginStore = defineStore('login', () => {
       userId.value = null
       userName.value = null
       router.push("/")
-      window.location.reload()
+      setTimeout(()=>{
+        window.location.reload()
+      }, 10)
     } catch (error) {
       message.value = error
     }
