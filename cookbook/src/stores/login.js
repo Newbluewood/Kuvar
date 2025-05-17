@@ -51,6 +51,7 @@ export const useLoginStore = defineStore('login', () => {
       if (res.data.res === 'ok') {
         loginStatus.value = true
         localStorage.setItem('sid', res.data.sid)
+        router.push("/recipes")
         window.location.reload()
       }
     } catch (error) {
